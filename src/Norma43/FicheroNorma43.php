@@ -2,13 +2,6 @@
 
 namespace Norma43;
 
-use Norma43\Registro;
-use Norma43\RegistroCabeceraCuenta;
-use Norma43\RegistroPrincipalMovimientos;
-use Norma43\RegistroComplementarioConcepto;
-use Norma43\RegistroComplementarioInformacion;
-use Norma43\RegistroFinalCuenta;
-use Norma43\RegistroFinFichero;
 use Norma43\Exception\FileNotFoundException;
 
 class FicheroNorma43
@@ -57,11 +50,11 @@ class FicheroNorma43
     }
 
     public function load($path)
-    {        
+    {
         $fd = @fopen($path, 'r');
-        
+
         if(!$fd) {
-            throw new FileNotFoundException("File not found", 100);            
+            throw new FileNotFoundException("File not found", 100);
         }
 
         while(!feof($fd)) {
@@ -73,9 +66,10 @@ class FicheroNorma43
                     $this->cabeceraCuenta = new RegistroCabeceraCuenta($linea);
                     break;
                 case Registro::REGISTRO_PRINCIPAL_MOVIMIENTOS:
-                    $this->registroPrincipalMovimientos[] = new RegistroPrincipalMovimientos($linea);                    
+                    $this->registroPrincipalMovimientos[] = new RegistroPrincipalMovimientos($linea);
                     break;
                 case Registro::REGISTRO_COMPLEMENTARIO_CONCEPTO:
+                    $this->registrosComplementarios[] = new RegistroComplementarioConcepto($linea);
                     break;
                 case Registro::REGISTRO_COMPLEMENTARIO_INFORMACION:
                     break;
@@ -87,13 +81,28 @@ class FicheroNorma43
         }
     }
 
+
+    /**
+     * @return \Norma43\RegistroCabeceraCuenta
+     */
     public function getCabeceraCuenta()
     {
         return $this->cabeceraCuenta;
     }
 
+    /**
+     * @return RegistroPrincipalMovimientos[]
+     */
     public function getRegistroPrincipalMovimientos()
     {
         return $this->registroPrincipalMovimientos;
+    }
+
+    /**
+     * @return RegistroPrincipalMovimientos[]
+     */
+    public function getRegistroComplementarioConcepto()
+    {
+        return $this->registrosComplementarios;
     }
 }

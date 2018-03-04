@@ -2,8 +2,6 @@
 
 namespace Norma43;
 
-use Norma43\Registro;
-
 class RegistroCabeceraCuenta extends Registro
 {
     /**
@@ -26,13 +24,13 @@ class RegistroCabeceraCuenta extends Registro
 
     /**
      * Fecha inicial
-     * @var DateTime
+     * @var \DateTime
      */
     private $fechaInicial;
 
     /**
      * Fecha Final
-     * @var DateTime
+     * @var \DateTime
      */
     private $fechaFinal;
 
@@ -72,18 +70,18 @@ class RegistroCabeceraCuenta extends Registro
         $this->setCodigoEntidad(substr($linea, 2, 4));
         $this->setCodigoOficina(substr($linea, 6, 4));
         $this->setNumeroCuenta(substr($linea, 10, 10));
-        
-        $fechaString = substr($linea, 20, 6);        
+
+        $fechaString = substr($linea, 20, 6);
         $this->setFechaInicial(new \DateTime($this->parseDate($fechaString)));
-        
+
         $fechaString = substr($linea, 26, 6);
         $this->setFechaFinal(new \DateTime($this->parseDate($fechaString)));
-        
+
         $this->setTipoOperacion(substr($linea, 32, 1));
 
         $importe = $this->parseImporte(substr($linea, 33, 14));
         $this->setImporteSaldoInicial($importe);
-        
+
         $this->setCodigoDivisa(substr($linea, 47, 3));
         $this->setModalidadInformacion(substr($linea, 50, 1));
         $this->setNombreAbreviado(substr($linea, 51, 26));

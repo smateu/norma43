@@ -2,7 +2,6 @@
 
 namespace Norma43;
 
-use Norma43\Registro;
 
 class RegistroPrincipalMovimientos extends Registro
 {
@@ -14,13 +13,13 @@ class RegistroPrincipalMovimientos extends Registro
 
     /**
      * Fecha de operación
-     * @var DateTime $fechaOperacion
+     * @var \DateTime $fechaOperacion
      */
     private $fechaOperacion;
 
     /**
      * Fecha de valor
-     * @var DateTime $fechaValor
+     * @var \DateTime $fechaValor
      */
     private $fechaValor;
 
@@ -70,7 +69,7 @@ class RegistroPrincipalMovimientos extends Registro
     {
         $this->setCodigoRegistro(Registro::REGISTRO_PRINCIPAL_MOVIMIENTOS);
         $this->setCodigoOficinaOrigen(substr($linea, 6, 4));
-        
+
         $fechaString = substr($linea, 10, 6);
         $this->setFechaOperacion(new \DateTime($this->parseDate($fechaString)));
 
@@ -232,7 +231,7 @@ class RegistroPrincipalMovimientos extends Registro
     public function getReferencias()
     {
         return array(
-            $this->getReferencia1(), 
+            $this->getReferencia1(),
             $this->getReferencia2()
         );
     }

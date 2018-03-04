@@ -27,8 +27,15 @@ class FicheroNorma43Test extends \PHPUnit_Framework_TestCase
 
     public function testRegistroPrincipalMovimientosIsCreated()
     {
-	$movimientos = $this->norma43->getRegistroPrincipalMovimientos();
-	$this->assertInternalType('array',$movimientos);
+        $movimientos = $this->norma43->getRegistroPrincipalMovimientos();
+        $this->assertInternalType('array',$movimientos);
         $this->assertInstanceOf('Norma43\RegistroPrincipalMovimientos', $movimientos[0]);
+    }
+
+    public function testRegistroComplementarioConceptoIsCreated()
+    {
+        $conceptos = $this->norma43->getRegistroComplementarioConcepto();
+        $this->assertInternalType('array',$conceptos);
+        $this->assertInstanceOf('Norma43\RegistroComplementarioConcepto', $conceptos[0]);
     }
 }

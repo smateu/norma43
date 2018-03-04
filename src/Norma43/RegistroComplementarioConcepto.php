@@ -2,8 +2,6 @@
 
 namespace Norma43;
 
-use Norma43\Registro;
-
 class RegistroComplementarioConcepto extends Registro
 {
     /**
@@ -71,7 +69,7 @@ class RegistroComplementarioConcepto extends Registro
     public function getConceptos()
     {
         return array(
-            $this->getConcepto1(), 
+            $this->getConcepto1(),
             $this->getConcepto2()
         );
     }

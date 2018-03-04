@@ -2,7 +2,6 @@
 
 namespace Norma43;
 
-use Norma43\Registro;
 
 class RegistroComplementarioInformacion extends Registro
 {
