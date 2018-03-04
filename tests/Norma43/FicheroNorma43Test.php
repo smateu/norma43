@@ -24,4 +24,11 @@ class FicheroNorma43Test extends \PHPUnit_Framework_TestCase
     {
         $this->assertInstanceOf('Norma43\RegistroCabeceraCuenta', $this->norma43->getCabeceraCuenta());
     }
+
+    public function testRegistroPrincipalMovimientosIsCreated()
+    {
+	$movimientos = $this->norma43->getRegistroPrincipalMovimientos();
+	$this->assertInternalType('array',$movimientos);
+        $this->assertInstanceOf('Norma43\RegistroPrincipalMovimientos', $movimientos[0]);
+    }
 }

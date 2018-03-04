@@ -72,7 +72,8 @@ class FicheroNorma43
                 case Registro::REGISTRO_CABECERA_CUENTA:
                     $this->cabeceraCuenta = new RegistroCabeceraCuenta($linea);
                     break;
-                case Registro::REGISTRO_PRINCIPAL_MOVIMIENTOS:                    
+                case Registro::REGISTRO_PRINCIPAL_MOVIMIENTOS:
+                    $this->registroPrincipalMovimientos[] = new RegistroPrincipalMovimientos($linea);                    
                     break;
                 case Registro::REGISTRO_COMPLEMENTARIO_CONCEPTO:
                     break;
@@ -89,5 +90,10 @@ class FicheroNorma43
     public function getCabeceraCuenta()
     {
         return $this->cabeceraCuenta;
+    }
+
+    public function getRegistroPrincipalMovimientos()
+    {
+        return $this->registroPrincipalMovimientos;
     }
 }

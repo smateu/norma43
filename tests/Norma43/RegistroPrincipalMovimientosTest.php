@@ -8,9 +8,11 @@ use Norma43\RegistroPrincipalMovimientos;
 class RegistroPrincipalMovimientosTest extends \PHPUnit_Framework_TestCase
 {
     private $registro;
+    private $norma43;
 
     public function setUp()
     {
+        //$this->norma43 = new FicheroNorma43(__DIR__.'/Resources/simple-sample');
         $this->registro = new RegistroPrincipalMovimientos('22    0569140410140410030381000000000310280000000000000000000000B-97895437      ');
     }
     

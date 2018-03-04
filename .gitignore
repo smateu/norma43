@@ -1,3 +1,6 @@
 web/
 vendor/
 tests/Norma43/Resources/*
+.project
+.buildpath
+.settings
